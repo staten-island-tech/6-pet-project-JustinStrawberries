@@ -1,23 +1,26 @@
 class Dog:
     def __init__(self, name, happiness, toys):
         self.name = name
-        self.__happiness = happiness
+        self.happiness = happiness
         self.toys = toys
 
-    def play(self, amount):
-        self.__happiness += amount
+    def play(self, minutes):
+        happy = minutes*2
+        self.happiness += happy
+        print(f"{self.name}, played fetch!")
 
     def show_happiness(self):
-        print(f"{self.name} has ${self.__happiness}")
+        print(f"{self.name} has ${self.happiness}")
 
 Odie = Dog("Odie", 90, ["Bully Stick"])
 
 
 print(Odie.__dict__)
 
-Odie.play(10)
+x = input(f"How many minutes do you to spend playing with {Dog.name}? '(max 60)'")
 
-print(Odie.__dict__)
+Odie.play(x)
+print(f"Odie has '{Odie.happiness}' happiness now.")
 
 # class BankAccount:
 #     def __init__(self, owner, balance):
