@@ -7,20 +7,51 @@ class Dog:
     def play(self, minutes):
         happy = minutes*2
         self.happiness += happy
+        if self.happiness > 100:
+            self.happiness = 100
         print(f"{self.name}, played fetch!")
 
     def show_happiness(self):
         print(f"{self.name} has ${self.happiness}")
 
-Odie = Dog("Odie", 90, ["Bully Stick"])
+class Cat:
+    def __init__(self, name, happiness, toys):
+        self.name = name
+        self.happiness = happiness
+        self.toys = toys
 
+    def play(self, minutes):
+        happy = minutes*2
+        self.happiness += happy
+        if self.happiness > 100:
+            self.happiness = 100
+        print(f"{self.name}, played chased a laser!")
+
+    def show_happiness(self):
+        print(f"{self.name} has ${self.happiness}")
+
+
+Odie = Dog("Odie", 90, ["Bully Stick"])
+Fluffy = Dog("Fluffy", 20, ["Red Collar"])
+Mr_Meows = Cat("Mr. Meows", 45, {""})
+Ms_Meows = Cat("Ms. Meows", 70, ["Fish"])
+
+
+pet = Odie
 
 print(Odie.__dict__)
 
-x = input(f"How many minutes do you to spend playing with {Dog.name}? '(max 60)'")
+while True:
+    x = int(input(f"How many minutes do you to spend playing with {pet.name}? '(max 60)'"))
+    if 0 < x <= 60:
+        break
+    else:
+        print('Enter a number from 1-60!')
+    
 
-Odie.play(x)
+pet.play(x)
 print(f"Odie has '{Odie.happiness}' happiness now.")
+
 
 # class BankAccount:
 #     def __init__(self, owner, balance):
@@ -40,6 +71,7 @@ print(f"Odie has '{Odie.happiness}' happiness now.")
 #         self.name = name
 #         self.money = money
 #         self.inventory = inventory
+
 
 #     def buy(self, item):
 #         self.inventory.append(item)
