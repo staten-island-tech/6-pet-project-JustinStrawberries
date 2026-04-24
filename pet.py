@@ -19,11 +19,33 @@ class Dog:
             print(f"Your pet's energy is too low to play for {minutes} minutes")
             return True
 
+    def rest(self, hours):
+        energizing = hours*10
+        self.energy += energizing
+        print(f"{self.name}, slept for {hours} hours!")
+        return False
+    
+    
+def get_minutes_for_play(pet):
+    while True:
+        user_input = input(f"How many minutes do you to spend playing with {pet.name}? (max 60): ")
 
-    def show_happiness(self):
-        print(f"{self.name} has ${self.happiness}")
+        try:
+            x = int(user_input)
+
+            if 0 < x <= 60:
+                return x
+            else:
+                print('Enter a number from 1-60!')
+        except ValueError:
+            print('Not a viable input')
+    
+# pet.play(x)
+# print(f"Odie has {pet.happiness} happiness now.")
+# print(f"Odie has {pet.energy} energy now.")
 
 class Cat:
+
     def __init__(self, name, happiness, toys):
         self.name = name
         self.happiness = happiness
@@ -37,7 +59,8 @@ class Cat:
         print(f"{self.name}, played chased a laser!")
 
     def show_happiness(self):
-        print(f"{self.name} has ${self.happiness}")
+        print(f"{self.name} has {self.happiness} happiness")
+
 
 
 Odie = Dog("Odie", 90, ["Bully Stick"], 10)
@@ -51,50 +74,36 @@ pet = Odie
 print(Odie.__dict__)
 
 while True:
-    user_input = input(f"How many minutes do you to spend playing with {pet.name}? (max 60)")
+    print(f"\nWhat do you want to do with {pet.name}?")
+    print("1. Play")
+    print("2. Rest")
+    print("3. Show happiness")
+    print("4. Quit")
 
-    try:
-        x = int(user_input)
+    choice = input("Enter a Choice")
 
-        if 0 < x <= 60:
-            break
-        else:
-            print('Enter a number from 1-60!')
-    except ValueError:
-        print('Not a viable input')
+    if choice == "1":
+        minutes = get_minutes_for_play(pet)
+
+
+
+
+
+def get_minutes_for_play(pet):
+    while True:
+        user_input = input(f"How many minutes do you to spend playing with {pet.name}? (max 60): ")
+
+        try:
+            x = int(user_input)
+
+            if 0 < x <= 60:
+                return x
+            else:
+                print('Enter a number from 1-60!')
+        except ValueError:
+            print('Not a viable input')
     
-
 pet.play(x)
-print(f"Odie has '{Odie.happiness}' happiness now.")
-print(f"Odie has '{Odie.energy}' energy now.")
+print(f"Odie has {Odie.happiness} happiness now.")
+print(f"Odie has {Odie.energy} energy now.")
 
-
-
-# class BankAccount:
-#     def __init__(self, owner, balance):
-#         self.owner = owner
-#         self.__balance = balance  # double underscore means "private"
-
-#     def deposit(self, amount):
-#         self.__balance += amount
-
-#     def show_balance(self):
-#         print(f"{self.owner} has ${self.__balance}")
-
-
-
-# class Mage:
-#     def __init__(self, name, money, inventory):
-#         self.name = name
-#         self.money = money
-#         self.inventory = inventory
-
-
-#     def buy(self, item):
-#         self.inventory.append(item)
-#         print(self.inventory)
-
-# Justin = Mage("Justin", 20, ["Gem"])
-# Justin.buy({"title": "Wand", "atk": 2})
-# print(Justin.dict) skibidi:
-# 
