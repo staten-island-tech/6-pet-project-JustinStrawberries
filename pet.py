@@ -34,16 +34,13 @@ def get_minutes_for_play(pet):
             x = int(user_input)
 
             if 0 < x <= 60:
+                print (f"You played with it for {x} minutes!")
                 return x
             else:
                 print('Enter a number from 1-60!')
         except ValueError:
             print('Not a viable input')
     
-# pet.play(x)
-# print(f"Odie has {pet.happiness} happiness now.")
-# print(f"Odie has {pet.energy} energy now.")
-
 class Cat:
 
     def __init__(self, name, happiness, toys):
@@ -80,10 +77,19 @@ while True:
     print("3. Show happiness")
     print("4. Quit")
 
-    choice = input("Enter a Choice")
+    choice = input("Enter a Choice: ")
 
     if choice == "1":
-        minutes = get_minutes_for_play(pet)
+        user_input = get_minutes_for_play(pet)
+        pet.play(user_input)
+    if choice == "2":
+
+    if choice == "3":
+
+    if choice == "4":
+
+
+
 
 
 
