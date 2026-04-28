@@ -40,6 +40,20 @@ def get_minutes_for_play(pet):
                 print('Enter a number from 1-60!')
         except ValueError:
             print('Not a viable input')
+
+def get_hours_for_rest(pet):
+    while True:
+        user_input = input(f"How many hours do you want {pet.name} to rest for? (max 12): ")
+
+        try:
+            x = int(user_input)
+
+            if 0 < x <= 12:
+                return x
+            else:
+                print('Enter a number from 1-12!')
+        except ValueError:
+            print('Not a viable input')
     
 class Cat:
 
@@ -74,7 +88,7 @@ while True:
     print(f"\nWhat do you want to do with {pet.name}?")
     print("1. Play")
     print("2. Rest")
-    print("3. Show happiness")
+    print("3. Show Stats")
     print("4. Quit")
 
     choice = input("Enter a Choice: ")
@@ -83,10 +97,13 @@ while True:
         user_input = get_minutes_for_play(pet)
         pet.play(user_input)
     if choice == "2":
-
+        user_input = get_hours_for_rest(pet)
+        pet.rest(user_input)
     if choice == "3":
+        print (f"\n{pet.name}'s stats are:")
+        
 
-    if choice == "4":
+    # if choice == "4":
 
 
 
