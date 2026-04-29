@@ -1,4 +1,4 @@
-class Dog:
+class Pet:
     def __init__(self, name, happiness, toys, energy):
         self.name = name
         self.happiness = happiness
@@ -13,7 +13,7 @@ class Dog:
             self.happiness += happy
             if self.happiness > 100:
                 self.happiness = 100
-                print(f"{self.name}, played fetch for {minutes} minutes!")
+            print(f"{self.name}, played fetch for {minutes} minutes!")
             return False
         else:
             print(f"Your pet's energy is too low to play for {minutes} minutes")
@@ -25,6 +25,9 @@ class Dog:
         print(f"{self.name}, slept for {hours} hours!")
         return False
     
+    def show_stats(self):
+        return(f"{self.name} | Happiness: {self.happiness} | Energy: {self.energy}")
+    
     
 def get_minutes_for_play(pet):
     while True:
@@ -34,7 +37,7 @@ def get_minutes_for_play(pet):
             x = int(user_input)
 
             if 0 < x <= 60:
-                print (f"You played with it for {x} minutes!")
+                print (f"You played with {pet.name} for {x} minutes!")
                 return x
             else:
                 print('Enter a number from 1-60!')
@@ -54,30 +57,13 @@ def get_hours_for_rest(pet):
                 print('Enter a number from 1-12!')
         except ValueError:
             print('Not a viable input')
-    
-class Cat:
-
-    def __init__(self, name, happiness, toys):
-        self.name = name
-        self.happiness = happiness
-        self.toys = toys
-
-    def play(self, minutes):
-        happy = minutes*2
-        self.happiness += happy
-        if self.happiness > 100:
-            self.happiness = 100
-        print(f"{self.name}, played chased a laser!")
-
-    def show_happiness(self):
-        print(f"{self.name} has {self.happiness} happiness")
 
 
 
-Odie = Dog("Odie", 90, ["Bully Stick"], 10)
-Fluffy = Dog("Fluffy", 20, ["Red Collar"], 20)
-Mr_Meows = Cat("Mr. Meows", 45, [""])
-Ms_Meows = Cat("Ms. Meows", 70, ["Fish"])
+Odie = Pet("Odie", 90, ["Bully Stick"], 10)
+Fluffy = Pet("Fluffy", 20, ["Red Collar"], 20)
+Mr_Meows = Pet("Mr. Meows", 45, [""])
+Ms_Meows = Pet("Ms. Meows", 70, ["Fish"])
 
 
 pet = Odie
@@ -96,11 +82,16 @@ while True:
     if choice == "1":
         user_input = get_minutes_for_play(pet)
         pet.play(user_input)
+
     if choice == "2":
         user_input = get_hours_for_rest(pet)
         pet.rest(user_input)
+
     if choice == "3":
-        print (f"\n{pet.name}'s stats are:")
+        print(pet.show_stats())
+        print()
+        input("Press enter to return to menu")
+        
         
 
     # if choice == "4":
